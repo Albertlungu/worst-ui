@@ -1,14 +1,33 @@
-#continue-btn {
+body {
+  margin: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+#continue-btn-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 300px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  /* This CSS transition gives the "actual movement" look */
+  transition: top 0.18s ease-out, left 0.18s ease-out;
+}
+
+#continue-btn {
   border-width: 0;
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
   background-color: #282c33;
   color: #dce0e4;
-  transition-duration: 0.3s;
+  cursor: pointer;
+  transition: padding 0.3s, background-color 0.3s;
 }
 
 #continue-btn:hover {
