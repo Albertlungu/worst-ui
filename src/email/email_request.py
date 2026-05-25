@@ -1,7 +1,10 @@
 import smtplib
 from email.message import EmailMessage
 
-def setup_message(content: str, subject: str, sender: str, recipient: str) -> EmailMessage:
+
+def setup_message(
+    content: str, subject: str, sender: str, recipient: str
+) -> EmailMessage:
     msg = EmailMessage()
     msg.set_content(content)
     msg["Subject"] = subject
@@ -9,6 +12,7 @@ def setup_message(content: str, subject: str, sender: str, recipient: str) -> Em
     msg["To"] = recipient
 
     return msg
+
 
 def send_message(message: EmailMessage):
     try:
@@ -20,14 +24,16 @@ def send_message(message: EmailMessage):
     except Exception as e:
         print(f"Error: {e}")
 
+
 def main():
     message = setup_message(
-        content = "this is a test",
-        subject = "this is a test",
-        sender = "albert.lungu.2010@gmail.com",
-        recipient = "albert.lungu.2010@gmail.com"
-        )
+        content="this is a test",
+        subject="this is a test",
+        sender="albert.lungu.2010@gmail.com",
+        recipient="mwu2@ocdsb.ca",
+    )
     send_message(message)
+
 
 if __name__ == "__main__":
     main()
