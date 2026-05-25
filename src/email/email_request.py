@@ -2,7 +2,7 @@ import smtplib
 from email.message import EmailMessage
 
 
-def setup_message(
+def send_message(
     content: str, subject: str, sender: str, recipient: str
 ) -> EmailMessage:
     msg = EmailMessage()
@@ -11,28 +11,23 @@ def setup_message(
     msg["From"] = sender
     msg["To"] = recipient
 
-    return msg
-
-
-def send_message(message: EmailMessage):
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
             server.login("albert.lungu.2010@gmail.com", "rndbdtpsvujjkocc")
-            server.send_message(message)
+            server.send_message(msg)
         print("Check your inbox")
     except Exception as e:
         print(f"Error: {e}")
 
 
 def main():
-    message = setup_message(
+    send_message(
         content="this is a test",
         subject="this is a test",
         sender="albert.lungu.2010@gmail.com",
         recipient="mwu2@ocdsb.ca",
     )
-    send_message(message)
 
 
 if __name__ == "__main__":
