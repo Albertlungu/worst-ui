@@ -1,5 +1,19 @@
 import smtplib
 from email.message import EmailMessage
+import random
+import string
+
+def generate_code():
+
+    characters = string.ascii_lowercase + string.digits
+    code = ''.join(random.choices(characters, k=6))
+
+    return code
+
+EMAIL_CONTENT = f"""
+Your verification code is:
+{generate_code()}
+"""
 
 
 def send_message(
