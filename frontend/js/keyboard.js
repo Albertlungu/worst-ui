@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. The core function that scrambles everything and sets up a fresh run
     function initializeRandomKeyboard() {
         keyMap = {}; // Clear previous run mapping
-        
+
         const originalLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
         const originalNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
