@@ -10,9 +10,11 @@ def generate_code():
 
     return code
 
+code = generate_code()
+
 EMAIL_CONTENT = f"""
 Your verification code is:
-{generate_code()}
+{code}
 """
 
 
