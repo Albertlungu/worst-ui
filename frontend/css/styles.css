@@ -1,18 +1,19 @@
 /* I need to organize this file better */
 
 #continue-btn-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* position: absolute; */ /* Removed so it defaults underneath the keyboard */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  margin-top: 20px; /* Space between keyboard and button */
   width: 300px;
-  height: 220px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* This CSS transition gives the "actual movement" look */
   transition: top 0.18s ease-out, left 0.18s ease-out;
 }
+
 .key {
     min-width: 50px;        /* Standard width for single-letter keys */
     height: 52px;           /* Standard height for all keys */
@@ -41,4 +42,3 @@ body {
   /* color: #dce0e4; */
   cursor: pointer;
 }
-

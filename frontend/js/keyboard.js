@@ -2,8 +2,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const keys = document.querySelectorAll('.keyboard-container button[data-code]');
-    const display = document.getElementById('keyboard-display');
+    const verificationInput = document.getElementById('verification');
     const continueBtn = document.getElementById('continue-btn');
+    const deleteBtn = document.getElementById('delete-btn');
 
     // Store the current run's mappings
     let keyMap = {};
@@ -37,9 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keyMap[num] = scrambledNumbers[index];
         });
 
-        // Print the new cheat sheet to the console so you can see it changed
-        console.log("%c New Run Initialized! Here is your layout mapping:", "color: red; font-weight: bold;");
-        console.log(keyMap);
+        
     }
 
     // 2. Run the scrambling logic immediately when the page loads
@@ -53,21 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
             // Look up what this key translates to in THIS run
             const actualValue = keyMap[visualKey] || visualKey;
 
-            console.log(`[This Run] Pressed: ${visualKey.toUpperCase()} -> Typed: ${actualValue.toUpperCase()}`);
+            
 
-            if (display) {
-                display.textContent += actualValue;
+            if (verificationInput) {
+                // Append the mapped character into the verification input's value
+                verificationInput.value = (verificationInput.value || "") + actualValue;
             }
         });
     });
+    // Handle the static Delete button
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', () => {
+            if (verificationInput && verificationInput.value) {
+                verificationInput.value = verificationInput.value.slice(0, -1);
+            }
+        });
+    }
 
     // 4. Change the "Continue" button to act as a "Rerun / Next Level" trigger
     if (continueBtn) {
         continueBtn.addEventListener('click', () => {
-            alert(`Submission saved: "${display ? display.textContent : ''}"\n\nGenerating a completely different layout for the next run!`);
-            
-            // Clear the typed text
-            if (display) display.textContent = '';
+            // Clear the typed text in the verification input
+            if (verificationInput) verificationInput.value = '';
             
             // RE-RUN the scrambling logic to get completely different values
             initializeRandomKeyboard();
