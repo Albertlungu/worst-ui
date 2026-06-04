@@ -65,6 +65,12 @@ if (container && button) {
 
 
 
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+  }
+});
+
 const activeKeys = new Map();
 
 window.addEventListener('keyup', (e) => {

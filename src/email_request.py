@@ -29,9 +29,7 @@ def generate_code() -> str:
     return code
 
 
-def send_message(
-    content: str, subject: str, sender: str, recipient: str
-) -> None:
+def send_message(content: str, subject: str, sender: str, recipient: str) -> None:
     """
     Given the content, a subject, a sender, and a recipient, uses the python smtplib to send an email
     to the recipient.
@@ -54,9 +52,7 @@ def send_message(
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
-            email = os.getenv("GMAIL_EMAIL", "")
-            password = os.getenv("GMAIL_PASSWORD", "")
-            server.login(email, password)
+            server.login("albert.lungu.2010@gmail.com", "djtfzwevrdujczcu")
             server.send_message(msg)
         print("Check your inbox")
     except Exception as e:
