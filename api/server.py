@@ -10,6 +10,16 @@ CORS(app)
 
 @app.route("/api/send", methods=["POST"])
 def send():
+    """
+    Handles payload reception on the /api/send endpoint. It intercepts the user's email,
+    generates a verification code, updates the shared TARGET, and pushes the code out.
+
+    Args:
+        None
+
+    Returns:
+        tuple: A Flask JSON response payload and determining HTTP status code.
+    """
     data = request.get_json(silent=True) or {}
     recipient = data.get("email")
     if not recipient:
@@ -33,6 +43,16 @@ def send():
 
 @app.route("/api/verify", methods=["GET", "POST"])
 def verify():
+    """
+    Handles verification requests on the /api/verify endpoint. It assesses the user-inputted
+    verification string against the saved TARGET from the backend environment.
+
+    Args:
+        None
+
+    Returns:
+        tuple: A Flask JSON response dictating success or failure, alongside an HTTP status code.
+    """
     data = request.get_json(silent=True) or {}
     payload = data.get("verification")
     if not payload:
