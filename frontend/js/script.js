@@ -3,6 +3,12 @@ const button = document.getElementById('continue-btn');
 
 if (container && button) {
   const moveAway = () => {
+    // Only move if the background verification says so
+    if (!window.isVerified) return;
+
+    // Switch to absolute positioning if first move
+    container.style.position = 'absolute';
+
     const minDistance = 400; // Minimum teleport distance
     const maxWidth = window.innerWidth;
     const maxHeight = window.innerHeight;
@@ -39,25 +45,27 @@ if (container && button) {
   container.addEventListener('mouseenter', moveAway);
 
   button.addEventListener('click', () => {
-    alert("You clicked me!");
+    let feedback = document.getElementById('feedback-msg');
+    if (!feedback) {
+      feedback = document.createElement('div');
+      feedback.id = 'feedback-msg';
+      feedback.style.marginTop = '10px';
+      container.parentNode.insertBefore(feedback, container.nextSibling);
+    }
+    
+    if (!window.isVerified) {
+        feedback.innerText = "Password incorrect.";
+        feedback.style.color = "red";
+    } else {
+        feedback.innerText = "Wow, you caught it! Code correct!";
+        feedback.style.color = "green";
+    }
   });
 }
 
 
 
 const activeKeys = new Map();
-
-// // Physical Keyboard Support
-// window.addEventListener('keydown', (e) => {
-//     const keyElement = document.querySelector(`[data-code="${e.code}"]`);
-//     if (keyElement) {
-//         if(['Tab', 'Space', 'AltLeft', 'AltRight', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
-//             e.preventDefault();
-//         }
-//         keyElement.classList.add('active');
-//         activeKeys.set(e.code, keyElement);
-//     }
-// });
 
 window.addEventListener('keyup', (e) => {
     const keyElement = document.querySelector(`[data-code="${e.code}"]`);
