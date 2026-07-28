@@ -15,8 +15,9 @@
 }
 
 .key {
-    min-width: 50px;        /* Standard width for single-letter keys */
-    height: 52px;           /* Standard height for all keys */
+  font-size: 6px;
+    /*min-width: 50px;         Standard width for single-letter keys */
+    /*height: 52px;            Standard height for all keys */
     box-sizing: border-box; /* Ensures borders don't accidentally push keys out of alignment */
 }
 body {
@@ -41,4 +42,8 @@ body {
   /* background-color: #282c33; */
   /* color: #dce0e4; */
   cursor: pointer;
+}
+
+#verification, #email {
+  font-size: 6px;
 }

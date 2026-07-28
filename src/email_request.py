@@ -4,7 +4,7 @@ import smtplib
 import string
 from email.message import EmailMessage
 
-DEBUG_MODE = True
+DEBUG_MODE = False
 HARDCODED_CODE = "aaaaaa"
 TARGET = "aaaaaa" if DEBUG_MODE else ""
 
